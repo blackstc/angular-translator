@@ -1,6 +1,21 @@
 angular.module("myApp").controller("ChallengeController", ["$scope", "$http", "$routeParams",
 function($scope, $http, $routeParams) {
 
+  $scope.languages = [
+    {
+      value: 'en',
+      label: 'English'
+    },
+    {
+      value: 'es',
+      label: 'Spanish'
+    },
+    {
+      value: 'fr',
+      label: 'French'
+    }
+  ];
+
   var id = $routeParams.userID;
   $scope.start = true;
   $scope.quizWords = [];
@@ -26,8 +41,8 @@ function($scope, $http, $routeParams) {
 
   $scope.translate = function(word) {
     payload = {
-      start: $scope.newWord.start,
-      end: $scope.newWord.end,
+      start: $scope.newWord.start.value,
+      end: $scope.newWord.end.value,
       word: word
     };
 
