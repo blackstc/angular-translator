@@ -1,6 +1,15 @@
 angular.module("myApp").controller("ChallengeController", ["$scope", "$http", "$routeParams",
 function($scope, $http, $routeParams) {
 
+  $scope.play = function() {
+    var audio = document.createElement('audio');
+    audio.setAttribute('src', 'http://www.amclassical.com/mp3/amclassical_beethoven_fur_elise.mp3');
+    audio.setAttribute('type', 'audio/mpeg')
+    audio.load();
+    audio.play();
+    console.log(audio);
+  };
+
   $scope.languages = [
     {
       value: 'en',
