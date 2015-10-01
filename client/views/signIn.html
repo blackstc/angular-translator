@@ -1,0 +1,8 @@
+<form name="addForm">
+  <div class="form-group">
+    <label><h3>User Name</h3></label>
+    <input type="text" id="first" class="form-control" ng-model="newUser.name" placeholder="User Name">
+  </div>
+  <button ng-hide="edit" type="submit" class="btn btn-primary" ng-click="addUser()">Save User</button>
+  <button ng-show="edit" type="submit" class="btn btn-primary" ng-click="editUser()">Save Edit</button>
+</form>
