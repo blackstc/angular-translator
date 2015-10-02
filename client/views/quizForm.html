@@ -1,0 +1,13 @@
+<div>
+  <h1 class="text-center">Question #{{ questionNumber + 1 }}</h1>
+  <h1 class="text-center">{{ newWord.end.label }}</h1>
+  <h2 class="text-center">{{ translatedWord[questionNumber] }}</h2>
+
+  <form name="formInput">
+    <div class="form-group">
+      <label>Translated to {{ newWord.start.label }}:</label>
+      <input type="text" class="form-control" ng-model="userInput.guess" placeholder="Guess Translation">
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="checkAnswer()">Submit Answer</button>
+  </form>
+</div>

@@ -1,15 +1,6 @@
 angular.module("myApp").controller("ChallengeController", ["$scope", "$http", "$routeParams",
 function($scope, $http, $routeParams) {
 
-  $scope.play = function() {
-    var audio = document.createElement('audio');
-    audio.setAttribute('src', 'http://www.amclassical.com/mp3/amclassical_beethoven_fur_elise.mp3');
-    audio.setAttribute('type', 'audio/mpeg')
-    audio.load();
-    audio.play();
-    console.log(audio);
-  };
-
   $scope.languages = [
     {
       value: 'en',
@@ -31,7 +22,7 @@ function($scope, $http, $routeParams) {
   $scope.translatedWord = [];
   $scope.questionNumber = 0;
   $scope.userInput = {};
-  var incorrect = 0;
+  $scope.incorrect = 0;
 
 
   $scope.createQuiz = function() {
@@ -77,16 +68,16 @@ function($scope, $http, $routeParams) {
   };
 
   updateIncorrect = function() {
-    incorrect++;
+    $scope.incorrect++;
     $scope.correct = false;
     $scope.questionNumber++;
   };
 
   init = function() {
-    if (incorrect < 5  && $scope.translatedWord.length < 10) {
+    if ($scope.incorrect < 5  && $scope.translatedWord.length < 10) {
       $scope.userInput = {};
       $scope.translate($scope.quizWords[$scope.questionNumber]);
-    } else if (incorrect === 5) {
+    } else if ($scope.incorrect === 5) {
       updateLoss();
     } else {
       updateComplete();

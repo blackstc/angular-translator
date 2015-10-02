@@ -1,5 +1,5 @@
 <h4>Filter by Name:</h4>
-<input type="text" ng-model='nameText'>
+<input type="text" ng-model='search.name'>
 <br>
 <div>
   <table class="table table-striped">
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="user in users| filter:nameText">
+      <tr ng-repeat="user in users| filter:search">
         <td><a href="/#/{{user._id}}">{{ user.name }}</a></td>
         <td>
           <button type="button" name="edit-button" ng-click="editForm()" class="btn btn-success btn-xs">Edit</button>

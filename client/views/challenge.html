@@ -1,53 +1,26 @@
-<form ng-show="start">
-  <h1>{{ user.name }}, prepare to be challenged... </h1>
-  <br>
-  <h3>Select the languges you want to be tested on</h3>
-  <div class="form-group">
-    <label for="sel1">Translate To:</label>
-    <select class="form-control" ng-model="newWord.start"
-    ng-options="language as language.label for language in languages">
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="sel1">Translate From:</label>
-    <select ng-model="newWord.end" class="form-control"
-    ng-options="language as language.label for language in languages">
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary" ng-click="play()">Start Challenge!</button>
-  <a class="btn btn-default" href="/#/{{user._id}}">Back</a>
-</form>
+<!-- form to pick languages -->
+<div ng-show="start">
+  <ng-pick-languages></ng-pick-languages>
+</div>
 
-<form ng-if="translatedWord.length > 0" ng-hide="complete" ng-hide="failed">
-  <h1 class="text-center">Question #{{ questionNumber + 1 }}</h1>
-  <h1 class="text-center">{{ newWord.end.label }}</h1>
-  <h2 class="text-center">{{ translatedWord[questionNumber] }}</h2>
-
-  <form name="formInput">
-    <div class="form-group">
-      <label>Translated to {{ newWord.start.label }}:</label>
-      <input type="text" class="form-control" ng-model="userInput.guess" placeholder="Guess Translation">
-    </div>
-    <button type="submit" class="btn btn-primary" ng-click="checkAnswer()">Submit Answer</button>
-  </form>
-</form>
+<!-- quiz questions -->
+<div ng-if="translatedWord.length > 0" ng-hide="complete || failed">
+  <ng-quiz-form></ng-quiz-form>
+</div>
 
 <br>
 
-<div ng-if="translatedWord.length > 1" ng-hide="complete" ng-hide="failed">
-
-  <div ng-show="correct" class="alert alert-success">Correct!</div>
-  <div ng-hide="correct" class="alert alert-danger">Incorrect! You suck! The Correct word was {{ quizWords[questionNumber - 1]}}</div>
+<!-- correct or incorrect alert message -->
+<div ng-if="translatedWord.length > 1" ng-hide="complete || failed">
+  <ng-answer-response></ng-answer-response>
 </div>
 
-<div class="jumbotron text-center" ng-show="failed">
-  <h1>{{ user.name }}, you have FAILED the challenge.</h1>
-  <img src="http://gifsec.com/wp-content/uploads/GIF/2014/03/You-suck-GIF.gif?gs=a" alt="you suck"/><br><br>
-  <a class="btn btn-danger" href="/#/{{user._id}}">Back to profile</a>
+<!-- message if user fails challenge -->
+<div ng-show="failed">
+  <ng-failed></ng-failed>
 </div>
 
-<div class="jumbotron text-center" ng-show="complete">
-  <h1>{{ user.name }}, you have PASSED the challenge.</h1>
-  <img src="https://media.giphy.com/media/Z7bxVQl7nWes/giphy.gif" alt="celebration"/><br><br>
-  <a class="btn btn-success" href="/#/{{user._id}}">Back to profile</a>
+<!-- message if user completes challenge -->
+<div ng-show="complete">
+  <ng-complete></ng-complete>
 </div>
