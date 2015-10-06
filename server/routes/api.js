@@ -31,7 +31,7 @@ router.get('/user/:id', function(req, res, next) {
 router.post('/users', function(req, res, next) {
   var newUser = new User({name: req.body.name});
   newUser.saveQ()
-    .then(function (result) {res.json(result);})
+    .then(function (result) {res.redirect("/");})
     .catch(function (err) {res.send(err);})
     .done();
 });
