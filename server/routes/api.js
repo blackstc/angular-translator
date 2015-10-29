@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
 // var mongoose = require('mongoose');
 var User = require('../models/user');
-var keys=require('../routes/key');
+// var keys=require('../routes/key');
 var randomWords = require('random-words');
 
 var bt = require('../../node_modules/bing-translate/lib/bing-translate.js').init({
