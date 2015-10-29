@@ -7,8 +7,8 @@ var keys=require('../routes/key');
 var randomWords = require('random-words');
 
 var bt = require('../../node_modules/bing-translate/lib/bing-translate.js').init({
-     client_id:keys.client_id,
-     client_secret:keys.client_secret
+     client_id:process.env.client_id,
+     client_secret:process.env.client_secret
 });
 
 // get ALL users
